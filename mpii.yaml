@@ -1,0 +1,71 @@
+train:
+
+  device: "cuda:0"
+
+  cudnn:
+    deterministic: True
+    benchmark: False
+
+  params:
+    batch_size: 48
+    epoch: 40
+    lr: 0.0001           
+    weight_decay: 0.0001
+    milestones: [10, 25]  
+    decay: 0.1
+    warmup: 5
+    name: mpii
+
+  model_name: "Model"
+
+  save:
+    metapath: "xxx"
+    folder: mpii
+    model_name: xxx
+    step: 5
+
+  data:
+    image: "/xxx/Image"
+    label: "/xxx/Label"
+    header: True
+    name: mpii
+    isFolder: True
+
+  pretrain:
+    enable: False
+    path:
+    device: 0
+
+  wandb:
+    enable: False
+
+test:
+
+  device: "cuda:0"
+
+  cudnn:
+    benchmark: False
+    deterministic: True
+
+  params:
+    batch_size: 128
+
+  save:
+    metapath: "xxx"
+    folder: mpii
+    model_name: xxx
+    iter: 5
+
+  data:
+    image: "/xxx/Image"
+    label: "/xxx/Label"
+    header: True
+    name: mpii
+    isFolder: True
+
+  test_id: 14
+
+  load:
+    begin: 5
+    end: 40
+    step: 5
